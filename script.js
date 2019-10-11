@@ -3,14 +3,18 @@
 // contentScript.js
 
 var d = new Date();
-
+console.log("Todays date",d)
+var fullDate =d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+console.log("Todays Full Date",fullDate);
 
 function goto_previousDate() {
   
-  
   d.setDate(d.getDate() - 1);
   console.log("Previous Date", d);
-  url = "https://api.nasa.gov/planetary/apod?api_key=2VNbudgKu8f4uT5F7mKlToOS8g3FsKX4uMLsmb4O&date="+d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate();
+  var fullDate =d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+
+  console.log("Full Date",fullDate);
+  url = "https://api.nasa.gov/planetary/apod?api_key=2VNbudgKu8f4uT5F7mKlToOS8g3FsKX4uMLsmb4O&date="+fullDate;
   fetch(url)
     .then(response => {
       if (response.ok) {
